@@ -2,22 +2,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Начало</title>
 </head>
 <body>
-<h1>Добави полет</h1>
-<form action="AddFlight" method="post">
-		Номер на полет <input type="text" name="flightNum" required> <br>
-		Дата на излитане <input type="date" name="departureDate" required> <br>
-		Час на излитане <input type="time" name="departureHour" required> <br>
-		Име <input type="text" name="firstName" required> <br>
-		Презиме <input type="text" name="secondName"> <br>
-		Фамилия <input type="text" name="surname" required> <br>
-		Цена на билет <input type="text" name="ticketPrice" required> <br>
-		Авиокомпания <input type="text" name="airlineName" required> <br>
-		Максимално тегло ръчен багаж <input type="text" name="cabinLuggageWeight"> <br>
-		Максимално тегло на допълнителен багаж <input type="text" name="extraLuggageWeight"> <br>
-		<input type="submit" value="Добави">
-</form>
+<a href="index.html">Начало |</a>
+<a href="add-form.html">Добави полет |</a>
+<a href="add-form.html">Провери конкретен полет |</a>
+<a href="add-form.html">Провери всички полети</a>
+<hr>
+
+<h1>Обработка на самолетни полети</h1>
+
+<p>Уеб приложение, което управлява добавянето и преглаждането на самолетни полети в статичен ArrayList.</p>
+
+<p><b>Функционалности:</b></p>
+<ul>
+	<li>HTML формуляр за въвеждането на нов полет;</li>
+	<li>запазване на данните в статичен ArrayList - flightsArrList;</li>
+	<li>извличане и подаване на информация в JSON формат</li>
+</ul>
 </body>
 </html>

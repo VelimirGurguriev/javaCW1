@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Flight;
+import repository.FlightRepository;
 
 /**
  * Servlet implementation class AddFlight
@@ -21,7 +22,9 @@ import model.Flight;
 public class AddFlight extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static final List<Flight> flightsArrList = new ArrayList<>();
+	//private static final List<Flight> flightsArrList = new ArrayList<>();
+	
+	private FlightRepository flightRepository;
 	
     /**
      * Default constructor. 
@@ -29,51 +32,23 @@ public class AddFlight extends HttpServlet {
     public AddFlight() {
         // TODO Auto-generated constructor stub
     }
-
-    // rework mby ?
-    protected void initFlightIfNeeded(HttpSession session) {
-    	
-    	if (session.getAttribute("flight") == null) {
-    		session.setAttribute("flight", new ArrayList<String>());
-    	}
-    }
     
-    protected String generateSourceCode(ArrayList<String> flight) {
-    	
-    	String source =
-			"<!DOCTYPE html>" +
-			"<html>" +
-				"<head>" +
-					"<meta charset='UTF-8'>" +
-				"</head>" +
-				"<body>" +
-					"<h1>Всички полети</h1>" +
-				"</body>" +
-			"</html>";
-    	
-    	return source;
-    }
-    
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.setContentType("application/json");
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		response.setContentType("application/json");
+//	    response.setCharacterEncoding("UTF-8");
+//
+//	    List<Flight> flights = FlightRepository.getFlightsArrList();
+//	    PrintWriter out = response.getWriter();
+//
+//	    out.print("[");
+//	    for (int i = 0; i < flights.size(); i++) {
+//	        out.print(flights.get(i).toJson());
+//	        if (i < flights.size() - 1) out.print(",");
+//	    }
+//	    out.print("]");
+//	}
 
-        PrintWriter out = response.getWriter();
-        out.print("[");
-        for (int i = 0; i < flightsArrList.size(); i++) {
-            out.print(flightsArrList.get(i).toJson());
-            if (i < flightsArrList.size() - 1) out.print(",");
-        }
-        out.print("]");
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
@@ -100,7 +75,7 @@ public class AddFlight extends HttpServlet {
 	                cabinLuggageWeight, extraLuggageWeight
 	            );
 			
-	        flightsArrList.add(flight);
+	        FlightRepository.addFlight(flight);
 	        
 	        String source = "<!DOCTYPE html>" +
 	        "<html>" +
@@ -130,7 +105,6 @@ public class AddFlight extends HttpServlet {
 			
 			response.getWriter().println(errorMsg);
 		}
-		
 		
 	}
 

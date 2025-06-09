@@ -33,22 +33,6 @@ public class AddFlight extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		response.setContentType("application/json");
-//	    response.setCharacterEncoding("UTF-8");
-//
-//	    List<Flight> flights = FlightRepository.getFlightsArrList();
-//	    PrintWriter out = response.getWriter();
-//
-//	    out.print("[");
-//	    for (int i = 0; i < flights.size(); i++) {
-//	        out.print(flights.get(i).toJson());
-//	        if (i < flights.size() - 1) out.print(",");
-//	    }
-//	    out.print("]");
-//	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
